@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-vmware-cbc",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A collection of nodes for VMware Carbon Black Cloud",
   "author": "Ryan Fortress",
   "license": "MIT",
