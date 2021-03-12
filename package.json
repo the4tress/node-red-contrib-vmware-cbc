@@ -1,8 +1,13 @@
 {
   "name": "node-red-contrib-vmware-cbc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collection of nodes for VMware Carbon Black Cloud",
-  "scripts": {
+  "author": "Ryan Fortress",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the4tress/node-red-contrib-vmware-cbc.git"
+  },  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -10,8 +15,6 @@
     "carbon black",
     "node-red"
   ],
-  "author": "Ryan Fortress",
-  "license": "MIT",
   "node-red": {
     "nodes": {
       "carbon-black-cloud": "APIs/carbon-black-cloud.js",
@@ -47,5 +50,8 @@
   },
   "dependencies": {
     "node-red-contrib-vmware-cbc": "file:"
+  },
+  "engines": {
+      "node": ">=8.17.0"
   }
 }
