@@ -13,7 +13,7 @@ Either use the **Menu > Manage Palette > Install** option or run the following c
     npm i node-red-contrib-vmware-cbc
 
 This package is available at the following locations:
- - Github: https://github.com/the4tress/node-red-contrib-vmware-cbc#readme
+ - Github: https://github.com/the4tress/node-red-contrib-vmware-cbc
  - npm: https://www.npmjs.com/package/node-red-contrib-vmware-cbc
  - NodeRED: https://flows.nodered.org/node/node-red-contrib-vmware-cbc
 
