@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-vmware-cbc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A collection of nodes for VMware Carbon Black Cloud",
   "author": "Ryan Fortress",
   "license": "MIT",
@@ -47,11 +47,5 @@
       "get-command-status": "APIs/Endpoint Standard APIs/Live Response/get-command-status.js",
       "close-session": "APIs/Endpoint Standard APIs/Live Response/close-session.js"
     }
-  },
-  "dependencies": {
-    "node-red-contrib-vmware-cbc": "file:"
-  },
-  "engines": {
-      "node": ">=8.17.0"
   }
 }
