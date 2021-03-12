@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('download-file',{
+        category: 'CBC Enterprise EDR',
+        color: '#00C1D5',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'file.png',
+        label: function() {
+            return this.name || 'download-file';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="download-file">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-tag"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="download-file">
+    <p>This API provides a means to download files. The files are able to be downloaded via AWS S3 pre-signed URLs. The URLs enables the client to perform a GET on the provided URLs and download the files. The links will automatically expire after one hour, unless a different expiration time is requested.</p>
+    <p>CAUTION - Anyone who has these links will be able to download the files until the requested expiration time (default one hour after the request). Ensure that care is taken when utilizing this API.</p>
+    <p><a href="https://developer.carbonblack.com/reference/cb-threathunter/latest/universal-binary-store-api/#download">See Documentation</a>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">object</span></dt>
+        <dd>An object of the search criteria.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>

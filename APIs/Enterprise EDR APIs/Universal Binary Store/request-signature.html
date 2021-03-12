@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    RED.nodes.registerType('request-signature',{
+        category: 'CBC Enterprise EDR',
+        color: '#00C1D5',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'file.png',
+        label: function() {
+            return this.name || 'request-signature';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="request-signature">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-tag"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="request-signature">
+    <p>This API will return a summary of the observed digital signature results for a given SHA-256 hash. The digital signature information for a binary may vary from one machine to another based on a variety of factors, including the presence of an up-to-date signature catalog on the host, system clock variations, ability to reach OCSP servers, custom root trust anchors, and more. Therefore, the results are ordered by prevalence, such that the most observed signatures will be returned first. The number of results are configurable, up to a max of 100 entries. Digital signatures can be recorded in a separate file (known as a “catalog” file) or embedded inside of the binary itself (an “embedded” signature). This signature API will capture the results of the endpoint’s verification of the digital signature associated with a given SHA-256 hash, stating whether that signature validation was based on a catalog file or an embedded signature.
+
+    </p>
+    <p><a href="https://developer.carbonblack.com/reference/cb-threathunter/latest/universal-binary-store-api/#request-3">See Documentation</a>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">string</span></dt>
+        <dd>String of the SHA256 for the file to get the signature for.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>

@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('alert-search',{
+        category: 'CBC Platform',
+        color: '#0091DA',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'file.png',
+        label: function() {
+            return this.name || 'alert-search';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="alert-search">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-tag"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="alert-search">
+    <p>Alert search request. Multiple pathways support similar request body schemas.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">object</span>
+        </dt>
+        <dd><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/alerts-api/#alert-search">See Documentation</a></dd>
+    </dl>
+    
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>an object of the result alerts.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>

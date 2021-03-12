@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('retrieve-enriched-events-search-results',{
+        category: 'CBC Endpoint Standard',
+        color: '#7F35B2',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: ['success', 'failure'],
+        icon: 'file.png',
+        label: function() {
+            return this.name || 'retrieve-enriched-events-search-results';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="retrieve-enriched-events-search-results">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-tag"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="retrieve-enriched-events-search-results">
+    <p>Retrieves the results of an enriched event search specified by a job_id. Results will be sorted based on the sort parameter used when starting the search. Confirm the job has completed by verifying that “contacted” equals “completed”.</p>
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/platform-search-api-enriched-events/#retrieve-results-for-an-enriched-events-search-v2">See Documentation</a>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">string</span></dt>
+        <dd>A string of the <code>job_id</code> for the search job.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>

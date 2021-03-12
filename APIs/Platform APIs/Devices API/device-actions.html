@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('device-actions',{
+        category: 'CBC Platform',
+        color: '#0091DA',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'file.png',
+        label: function() {
+            return this.name || 'device-actions';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="device-actions">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-tag"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="device-actions">
+    <p>The device actions endpoint allows you to create and execute an action on devices.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">string</span>
+        </dt>
+        <dd><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/devices-api/#device-actions">See Documentation</a></dd>
+    </dl>
+    
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>

@@ -1,0 +1,51 @@
+{
+  "name": "node-red-contrib-vmware-cbc",
+  "version": "1.0.0",
+  "description": "A collection of nodes for VMware Carbon Black Cloud",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vmware",
+    "carbon black",
+    "node-red"
+  ],
+  "author": "Ryan Fortress",
+  "license": "MIT",
+  "node-red": {
+    "nodes": {
+      "carbon-black-cloud": "APIs/carbon-black-cloud.js",
+      "alert-search": "APIs/Platform APIs/Alerts API/alert-search.js",
+      "get-alert-by-id": "APIs/Platform APIs/Alerts API/get-alert-by-id.js",
+      "create-note": "APIs/Platform APIs/Alerts API/create-note.js",
+      "get-notes": "APIs/Platform APIs/Alerts API/get-notes.js",
+      "delete-note": "APIs/Platform APIs/Alerts API/delete-note.js",
+      "search-devices": "APIs/Platform APIs/Devices API/search-devices.js",
+      "device-actions": "APIs/Platform APIs/Devices API/device-actions.js",
+      "get-time-limits": "APIs/Platform APIs/Process Search API/Calls for Processes/get-time-limits.js",
+      "start-process-search": "APIs/Platform APIs/Process Search API/Calls for Processes/start-process-search.js",
+      "retrieve-process-search-results": "APIs/Platform APIs/Process Search API/Calls for Processes/retrieve-process-search-results.js",
+      "configure-reputation-override": "APIs/Endpoint Standard APIs/Reputation Override API/configure-reputation-override.js",
+      "get-reputation-override": "APIs/Endpoint Standard APIs/Reputation Override API/get-reputation-override.js",
+      "search-reputation-override": "APIs/Endpoint Standard APIs/Reputation Override API/search-reputation-override.js",
+      "start-enriched-events-search": "APIs/Endpoint Standard APIs/Enriched Events Search API/start-enriched-events-search.js",
+      "retrieve-enriched-events-search": "APIs/Endpoint Standard APIs/Enriched Events Search API/retrieve-enriched-events-search-results.js",
+      "download-file": "APIs/Enterprise EDR APIs/Universal Binary Store/download-file.js",
+      "request-signature": "APIs/Enterprise EDR APIs/Universal Binary Store/request-signature.js",
+      "retrieve-metadata": "APIs/Enterprise EDR APIs/Universal Binary Store/retrieve-metadata.js",
+      "get-all-feeds": "APIs/Enterprise EDR APIs/Feed Manager API/get-all-feeds.js",
+      "create-new-private-feed": "APIs/Enterprise EDR APIs/Feed Manager API/create-new-private-feed.js",
+      "delete-feed": "APIs/Enterprise EDR APIs/Feed Manager API/delete-feed.js",
+      "get-reports": "APIs/Enterprise EDR APIs/Feed Manager API/get-reports.js",
+      "replace-reports": "APIs/Enterprise EDR APIs/Feed Manager API/replace-reports.js",
+      "start-session": "APIs/Endpoint Standard APIs/Live Response/start-session.js",
+      "get-session-status": "APIs/Endpoint Standard APIs/Live Response/get-session-status.js",
+      "send-command": "APIs/Endpoint Standard APIs/Live Response/send-command.js",
+      "get-command-status": "APIs/Endpoint Standard APIs/Live Response/get-command-status.js",
+      "close-session": "APIs/Endpoint Standard APIs/Live Response/close-session.js"
+    }
+  },
+  "dependencies": {
+    "node-red-contrib-vmware-cbc": "file:"
+  }
+}

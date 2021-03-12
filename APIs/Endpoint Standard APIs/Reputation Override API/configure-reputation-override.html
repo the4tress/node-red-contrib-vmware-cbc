@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    RED.nodes.registerType('configure-reputation-override',{
+        category: 'CBC Endpoint Standard',
+        color: '#7F35B2',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'file.png',
+        label: function() {
+            return this.name || 'configure-reputation-override';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="configure-reputation-override">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-tag"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="configure-reputation-override">
+    <p>Configure a new reputation override for a SHA-256, cert or IT tool.</p>
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/reputation-override-api/#configure-reputation-override">See Documentation</a>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">object</span></dt>
+        <dd>An object of the request body.</dd>
+        <dt class="optional">sessionId <span class="property-type">string</span></dt>
+        <dd> the <code>id</code> of the session to close. If this is provided, <code>msg.payload</code> is not required.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
