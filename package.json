@@ -7,7 +7,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/the4tress/node-red-contrib-vmware-cbc.git"
-  },  "scripts": {
+  },
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -47,5 +48,8 @@
       "get-command-status": "APIs/Endpoint Standard APIs/Live Response/get-command-status.js",
       "close-session": "APIs/Endpoint Standard APIs/Live Response/close-session.js"
     }
+  },
+  "dependencies": {
+    "node-red-contrib-vmware-cbc": "file:"
   }
 }
