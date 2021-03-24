@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get-events-for-process',{
+        category: 'CBC Platform',
+        color: '#0091DA',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'icons/cb_logo.png',
+        label: function() {
+            return this.name || 'get-events-for-process';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="get-events-for-process">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="get-events-for-process">
+    <p>Fetch the events associated with a given process. These events are often more complete than the enriched events but, unlike the enriched event searches, must be limited to one process at a time.
+
+        Note: This call reports its progress as soon as it can and continues to enumerate process events in the background. To receive the full results, you must resubmit the request until processed_segments is equal to total_segments.</p>
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/platform-search-api-processes/#get-events-associated-with-a-given-process-v2">See Documentation</a>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">object</span></dt>
+        <dd>Provide an object with the search criteria.</dd>
+        <dt>processGuid<span class="property-type">string</span></dt>
+        <dd>The <code>process_guid</code> of the process for which to find the events.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
