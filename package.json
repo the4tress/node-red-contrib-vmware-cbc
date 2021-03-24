@@ -29,6 +29,7 @@
       "get-time-limits": "APIs/Platform APIs/Process Search API/Calls for Processes/get-time-limits.js",
       "start-process-search": "APIs/Platform APIs/Process Search API/Calls for Processes/start-process-search.js",
       "retrieve-process-search-results": "APIs/Platform APIs/Process Search API/Calls for Processes/retrieve-process-search-results.js",
+      "get-events-for-process": "APIs/Platform APIs/Process Search API/Calls for Events/get-events-for-process.js",
       "configure-reputation-override": "APIs/Endpoint Standard APIs/Reputation Override API/configure-reputation-override.js",
       "get-reputation-override": "APIs/Endpoint Standard APIs/Reputation Override API/get-reputation-override.js",
       "search-reputation-override": "APIs/Endpoint Standard APIs/Reputation Override API/search-reputation-override.js",
