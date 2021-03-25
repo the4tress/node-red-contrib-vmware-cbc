@@ -50,7 +50,7 @@ module.exports = function(RED) {
                         // The first is the raw results
                         // The second is an msg per alert
                         // The third is the error
-                        node.send([msg, [msg.payload.results], null]);
+                        node.send([msg, msg.payload.results, null]);
                     } else {
                         node.send([null, null, body])
                         console.error(body)
