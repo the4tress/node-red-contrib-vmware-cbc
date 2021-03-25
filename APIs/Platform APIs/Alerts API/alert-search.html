@@ -6,7 +6,7 @@
             server: { value: '', type: 'carbon-black-cloud' }
         },
         inputs: 1,
-        outputs: 2,
+        outputs: 3,
         icon: 'font-awesome/fa-exclamation-triangle',
         label: function() {
             return this.name || 'alert-search';
@@ -29,22 +29,32 @@
 <script type="text/html" data-help-name="alert-search">
     <p>Alert search request. Multiple pathways support similar request body schemas.</p>
 
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/alerts-api/#alert-search">See Documentation</a></p>
+
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload
             <span class="property-type">object</span>
         </dt>
-        <dd><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/alerts-api/#alert-search">See Documentation</a></dd>
+        <dd>An object of the results.</dd>
     </dl>
     
     <h3>Outputs</h3>
     <ol class="node-ports">
         <li>Standard output
             <dl class="message-properties">
-                <dt>payload <span class="property-type">string</span></dt>
+                <dt>payload <span class="property-type">object</span></dt>
                 <dd>an object of the result alerts.</dd>
             </dl>
         </li>
+
+        <li>Each Alert
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of each individual alert.</dd>
+            </dl>
+        </li>
+
         <li>Standard error
             <dl class="message-properties">
                 <dt>payload <span class="property-type">string</span></dt>

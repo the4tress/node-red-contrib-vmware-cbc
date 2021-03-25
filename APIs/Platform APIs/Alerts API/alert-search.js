@@ -10,14 +10,19 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
+            node.status({
+                text: 'getting alerts...',
+                fill: 'grey'
+            })
+
             const data = JSON.stringify(msg.payload);
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/appservices/v6/orgs/' + this.server.orgKey + '/alerts/_search',
+                path: `/appservices/v6/orgs/${this.server.orgKey}/alerts/_search`,
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.customApiKey + '/' + this.server.customApiId,
+                    'X-Auth-Token': `${this.server.customApiKey}/${this.server.customApiId}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }
@@ -40,9 +45,14 @@ module.exports = function(RED) {
 
                         const schema = JSON.parse(body);
                         msg.payload = schema;
-                        node.send([msg, null]);
+
+                        // We need to output 3 different things.
+                        // The first is the raw results
+                        // The second is an msg per alert
+                        // The third is the error
+                        node.send([msg, [msg.payload.results], null]);
                     } else {
-                        node.send([null, body])
+                        node.send([null, null, body])
                         console.error(body)
                         node.status({
                             text: `statusCode: ${res.statusCode}`,
@@ -53,7 +63,7 @@ module.exports = function(RED) {
             })
             
             req.on('error', error => {
-                node.send([null, error])
+                node.send([null, null, error])
                 console.error(error)
                 node.status({
                     text: `statusCode: ${res.statusCode}`,
@@ -66,7 +76,7 @@ module.exports = function(RED) {
         })
     }
 
-    RED.nodes.registerType("alert-search", AlertSearchNode);
+    RED.nodes.registerType('alert-search', AlertSearchNode);
 }
 
 
