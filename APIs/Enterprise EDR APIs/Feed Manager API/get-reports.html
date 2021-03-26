@@ -6,7 +6,12 @@
             server: { value: '', type: 'carbon-black-cloud' }
         },
         inputs: 1,
-        outputs: 2,
+        outputs: 3,
+        outputLabels: [
+            'response',
+            'one msg per report',
+            'error'
+        ],
         icon: 'font-awesome/fa-rss-square',
         label: function() {
             return this.name || 'get-reports';
@@ -46,6 +51,14 @@
                 <dd>an object of the response.</dd>
             </dl>
         </li>
+
+        <li>Each Report
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of each individual report.</dd>
+            </dl>
+        </li>
+
         <li>Standard error
             <dl class="message-properties">
                 <dt>payload <span class="property-type">string</span></dt>

@@ -6,7 +6,12 @@
             server: { value: '', type: 'carbon-black-cloud' }
         },
         inputs: 1,
-        outputs: 2,
+        outputs: 3,
+        outputLabels: [
+            'response',
+            'one msg per device',
+            'error'
+        ],
         icon: 'font-awesome/fa-desktop',
         label: function() {
             return this.name || 'search-devices';
@@ -28,13 +33,14 @@
 
 <script type="text/html" data-help-name="search-devices">
     <p>Search devices in your organization.</p>
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/devices-api/#search-devices"> See Documentation</a></p>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload
-            <span class="property-type">string</span>
+            <span class="property-type">object</span>
         </dt>
-        <dd><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/devices-api/#search-devices"> See Documentation</a></dd>
+        <dd> an object of the search criteria.</dd>
         <dt class="optional">params <span class="property-type">object</span></dt>
         <dd> any search parameters to add.</dd>
     </dl>
@@ -47,6 +53,14 @@
                 <dd>an object of the devices matching the search criteria.</dd>
             </dl>
         </li>
+
+        <li>Each Device
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of each individual device.</dd>
+            </dl>
+        </li>
+
         <li>Standard error
             <dl class="message-properties">
                 <dt>payload <span class="property-type">string</span></dt>

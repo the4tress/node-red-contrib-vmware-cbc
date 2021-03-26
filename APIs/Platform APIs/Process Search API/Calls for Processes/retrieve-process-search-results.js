@@ -10,13 +10,18 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
+            node.status({
+                text: 'getting processes...',
+                fill: 'grey'
+            });
+           
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/api/investigate/v2/orgs/' + this.server.orgKey + '/processes/search_jobs/' + msg.jobId + '/results',
+                path: `/api/investigate/v2/orgs/${this.server.orgKey}/processes/search_jobs/${msg.jobId}/results`,
                 method: 'GET',
                 headers: {
-                    'X-Auth-Token': this.server.customApiKey + '/' + this.server.customApiId,
+                    'X-Auth-Token': `${this.server.customApiKey}/${this.server.customApiId}`,
                     'Content-Type': 'application/json'
                 }
             }
@@ -38,10 +43,10 @@ module.exports = function(RED) {
 
                         const schema = JSON.parse(body);
                         msg.payload = schema;
-                        node.send([msg, null]);
+                        node.send([msg, msg.payload.results, null]);
                     } else {
-                        node.send([null, body])
-                        console.error([null, body])
+                        node.send([null, null, body])
+                        console.error(body)
                         node.status({
                             text: `statusCode: ${res.statusCode}`,
                             fill: 'red'
@@ -51,8 +56,8 @@ module.exports = function(RED) {
             })
             
             req.on('error', error => {
-                node.send([null, error])
-                console.error([null, error])
+                node.send([null, null, error])
+                console.error(error)
                 node.status({
                     text: `statusCode: ${res.statusCode}`,
                     fill: 'red'
@@ -65,5 +70,3 @@ module.exports = function(RED) {
 
     RED.nodes.registerType('retrieve-process-search-results', RetrieveProcessSearchResultsNode);
 }
-
-

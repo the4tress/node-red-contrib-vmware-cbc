@@ -14,10 +14,10 @@ module.exports = function(RED) {
             let options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/appservices/v6/orgs/' + this.server.orgKey + '/devices/_search',
+                path: `/appservices/v6/orgs/${this.server.orgKey}/devices/_search`,
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.customApiKey + '/' + this.server.customApiId,
+                    'X-Auth-Token': `${this.server.customApiKey}/${this.server.customApiId}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }
@@ -26,7 +26,7 @@ module.exports = function(RED) {
             if (msg.params) { options.params = msg.params }
 
             const req = https.request(options, res => {
-                // Start an emptry string for the body. This will be built on as we iterate through the response parts.
+                // Start an empty string for the body. This will be built on as we iterate through the response parts.
                 let body = '';
                 
                 // Add the response data to the body
@@ -42,9 +42,9 @@ module.exports = function(RED) {
 
                         const schema = JSON.parse(body);
                         msg.payload = schema;
-                        node.send(msg);
+                        node.send([msg, msg.payload.results, null]);
                     } else {
-                        node.send(body)
+                        node.send([null, null, body])
                         console.error(body)
                         node.status({
                             text: `statusCode: ${res.statusCode}`,
@@ -55,7 +55,7 @@ module.exports = function(RED) {
             })
             
             req.on('error', error => {
-                node.send(error)
+                node.send([null, null, error])
                 console.error(error)
                 node.status({
                     text: `statusCode: ${res.statusCode}`,
@@ -68,7 +68,7 @@ module.exports = function(RED) {
         })
     }
 
-    RED.nodes.registerType("search-devices", SearchDevicesNode);
+    RED.nodes.registerType('search-devices', SearchDevicesNode);
 }
 
 

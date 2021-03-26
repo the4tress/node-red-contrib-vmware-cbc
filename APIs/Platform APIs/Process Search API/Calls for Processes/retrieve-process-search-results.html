@@ -6,7 +6,12 @@
             server: { value: '', type: 'carbon-black-cloud' }
         },
         inputs: 1,
-        outputs: 2,
+        outputs: 3,
+        outputLabels: [
+            'response',
+            'one msg per process',
+            'error'
+        ],
         icon: 'font-awesome/fa-search',
         label: function() {
             return this.name || 'retrieve-process-search-results';
@@ -45,6 +50,14 @@
                 <dd>an object of the response</dd>
             </dl>
         </li>
+
+        <li>Each Process
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of each individual process.</dd>
+            </dl>
+        </li>
+
         <li>Standard error
             <dl class="message-properties">
                 <dt>payload <span class="property-type">string</span></dt>

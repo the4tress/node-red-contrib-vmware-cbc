@@ -40,9 +40,9 @@ module.exports = function(RED) {
 
                         const schema = JSON.parse(body);
                         msg.payload = schema;
-                        node.send([msg, null]);
+                        node.send([msg, msg.payload.results, null]);
                     } else {
-                        node.send([null, body])
+                        node.send([null, null, body])
                         console.error(body)
                         node.status({
                             text: `statusCode: ${res.statusCode}`,
@@ -53,7 +53,7 @@ module.exports = function(RED) {
             })
             
             req.on('error', error => {
-                node.send([null, error])
+                node.send([null, null, error])
                 console.error(error)
                 node.status({
                     text: `statusCode: ${res.statusCode}`,
