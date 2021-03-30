@@ -41,6 +41,7 @@
       "request-signature": "APIs/Enterprise EDR APIs/Universal Binary Store/request-signature.js",
       "retrieve-metadata": "APIs/Enterprise EDR APIs/Universal Binary Store/retrieve-metadata.js",
       "get-all-feeds": "APIs/Enterprise EDR APIs/Feed Manager API/get-all-feeds.js",
+      "get-specific-feed": "APIs/Enterprise EDR APIs/Feed Manager API/get-specific-feed.js",
       "create-new-private-feed": "APIs/Enterprise EDR APIs/Feed Manager API/create-new-private-feed.js",
       "delete-feed": "APIs/Enterprise EDR APIs/Feed Manager API/delete-feed.js",
       "get-reports": "APIs/Enterprise EDR APIs/Feed Manager API/get-reports.js",
