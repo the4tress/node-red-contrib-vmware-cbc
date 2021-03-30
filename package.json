@@ -51,5 +51,8 @@
       "get-command-status": "APIs/Endpoint Standard APIs/Live Response/get-command-status.js",
       "close-session": "APIs/Endpoint Standard APIs/Live Response/close-session.js"
     }
+  },
+  "dependencies": {
+    "node-red-contrib-vmware-cbc": "file:"
   }
 }

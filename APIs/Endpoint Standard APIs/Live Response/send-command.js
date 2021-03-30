@@ -40,6 +40,7 @@ module.exports = function(RED) {
 
                         const schema = JSON.parse(body);
                         msg.payload = schema;
+                        msg.command_id = msg.payload.id;
                         node.send([msg, null]);
                     } else {
                         node.send([null, body])

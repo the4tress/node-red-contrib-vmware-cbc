@@ -10,20 +10,23 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', function(msg) {
-            if (msg.payload) { msg.session_id = msg.payload; }
             if (!msg.session_id) {
-                node.send([null, body])
-                console.error(body)
-                node.status({
-                    text: 'Missing session_id',
-                    fill: 'red'
-                })
+                if (msg.payload) { msg.session_id = msg.payload }
+                else {
+                    node.send([null, body])
+                    console.error(body)
+                    node.status({
+                        text: 'Missing session_id',
+                        fill: 'red'
+                    })    
+                }
             }
-            else {
+
+            if (msg.session_id) {
                 const options = {
                     hostname: this.server.domain,
                     port: 443,
-                    path: `/integrationServices/v3/cblr/session/${msg.payload}`,
+                    path: `/integrationServices/v3/cblr/session/${msg.session_id}`,
                     method: 'GET',
                     headers: {
                         'X-Auth-Token': `${this.server.liveResponse_api_key}/${this.server.liveResponse_api_id}`,
