@@ -2,7 +2,7 @@ const https = require('https')
 
 module.exports = function(RED) {
     function GetSessionStatusNode(config) {
-        RED.nodes.createNode(this,config);
+        RED.nodes.createNode(this, config);
 
         // Retrieve the config node
         this.server = RED.nodes.getNode(config.server);
