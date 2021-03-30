@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get-specific-feed',{
+        category: 'CBC Enterprise EDR',
+        color: '#00C1D5',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'icons/cb_logo.png',
+        label: function() {
+            return this.name || 'get-specific-feed';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="get-specific-feed">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="get-specific-feed">
+    <p>Retrieve feed with <code>feed_id</code>. This feed must be owned by the caller.</p>
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/cb-threathunter/latest/feed-api/#get-specific-feed">See Documentation</a>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">string</span></dt>
+        <dd>A string of the <code>feed_id</code>.</dd>
+        <dt class="optional">feed_id <span class="property-type">string</span></dt>
+        <dd> the <code>feed_id</code> of the feed. If this is provided, <code>msg.payload</code> is not required.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>
