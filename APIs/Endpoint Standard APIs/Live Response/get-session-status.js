@@ -70,8 +70,8 @@ module.exports = function(RED) {
                 })
                 
                 req.end()
-            })
-        }
+            }
+        })
     }
 
     RED.nodes.registerType('get-session-status', GetSessionStatusNode);
