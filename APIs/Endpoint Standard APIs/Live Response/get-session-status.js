@@ -23,7 +23,7 @@ module.exports = function(RED) {
                 const options = {
                     hostname: this.server.domain,
                     port: 443,
-                    path: `/integrationServices/v3/cblr/session/${this.server.session_id}`,
+                    path: `/integrationServices/v3/cblr/session/${msg.payload}`,
                     method: 'GET',
                     headers: {
                         'X-Auth-Token': `${this.server.liveResponse_api_key}/${this.server.liveResponse_api_id}`,
