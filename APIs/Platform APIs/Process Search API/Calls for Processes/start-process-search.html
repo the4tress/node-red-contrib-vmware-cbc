@@ -28,11 +28,12 @@
 
 <script type="text/html" data-help-name="start-process-search">
     <p>Creates a process search job. The results for the search job may be requested using the job_id returned.</p>
+    <a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/platform-search-api-processes/#start-a-process-search-v2">See Documentation</a>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload <span class="property-type">object</span></dt>
-        <dd><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/platform-search-api-processes/#start-a-process-search-v2">See Documentation</a></dd>
+        <dd>The search criteria.</dd>
     </dl>
     
     <h3>Outputs</h3>
@@ -44,7 +45,7 @@
             </dl>
 
             <dl class="message-properties">
-                <dt>jobId <span class="property-type">string</span></dt>
+                <dt>job_id <span class="property-type">string</span></dt>
                 <dd>a string with the <code>job_id</code>.</dd>
             </dl>
         </li>

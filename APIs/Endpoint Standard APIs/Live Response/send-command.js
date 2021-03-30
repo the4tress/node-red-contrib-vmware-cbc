@@ -14,10 +14,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/integrationServices/v3/cblr/session/' + msg.sessionId + '/command',
+                path: `/integrationServices/v3/cblr/session/${msg.session_id}/command`,
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.liveResponseApiKey + '/' + this.server.liveResponseApiId,
+                    'X-Auth-Token': `${this.server.liveResponse_api_key}/${this.server.liveResponse_api_id}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }

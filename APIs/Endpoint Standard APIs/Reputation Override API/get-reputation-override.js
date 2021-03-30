@@ -13,10 +13,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/appservices/v6/orgs/' + this.server.orgKey + '/reputations/overrides/_search',
+                path: `/appservices/v6/orgs/${this.server.org_key}/reputations/overrides/_search`,
                 method: 'GET',
                 headers: {
-                    'X-Auth-Token': this.server.customApiKey + '/' + this.server.customApiId,
+                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
                     'Content-Type': 'application/json'
                 }
             }

@@ -28,12 +28,13 @@
 
 <script type="text/html" data-help-name="close-session">
     <p>Close session.</p>
-
+    <a href="https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/live-response-api/#close-a-session">See Documentation</a>
+    
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload<span class="property-type">object</span></dt>
-        <dd><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/live-response-api/#close-a-session">See Documentation</a></dd>
-        <dt class="optional">sessionId <span class="property-type">string</span></dt>
+        <dd> an object of he request body.</dd>
+        <dt class="optional">session_id <span class="property-type">string</span></dt>
         <dd> the <code>id</code> of the session to close. If this is provided, <code>msg.payload</code> is not required.</dd>
     </dl>
 

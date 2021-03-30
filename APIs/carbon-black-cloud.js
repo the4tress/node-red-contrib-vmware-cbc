@@ -7,9 +7,9 @@ module.exports = function(RED) {
         } else {
             this.domain = n.domain;
         }
-        this.orgKey = n.orgKey;
-        this.customApiId = n.customApiId;
-        this.customApiKey = n.customApiKey;
+        this.org_key = n.org_key;
+        this.custom_api_id = n.custom_api_id;
+        this.custom_api_key = n.custom_api_key;
         this.apiId = n.apiId;
         this.apiKey = n.apiKey;
         this.liveResponseApiId = n.liveResponseApiId;

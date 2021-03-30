@@ -9,12 +9,12 @@ module.exports = function(RED) {
 
         var node = this;
 
-        if (msg.payload) { msg.sessionId = msg.payload; }
-        if (!msg.sessionId) {
+        if (msg.payload) { msg.session_id = msg.payload; }
+        if (!msg.session_id) {
             node.send([null, body])
             console.error(body)
             node.status({
-                text: 'Missing sessionId',
+                text: 'Missing session_id',
                 fill: 'red'
             })
         }
@@ -24,10 +24,10 @@ module.exports = function(RED) {
                 const options = {
                     hostname: this.server.domain,
                     port: 443,
-                    path: '/integrationServices/v3/cblr/session/' + this.server.sessionId,
+                    path: '/integrationServices/v3/cblr/session/' + this.server.session_id,
                     method: 'GET',
                     headers: {
-                        'X-Auth-Token': this.server.liveResponseApiKey + '/' + this.server.liveResponseApiId,
+                        'X-Auth-Token': this.server.liveResponse_api_key + '/' + this.server.liveResponse_api_id,
                         'Content-Type': 'application/json'
                     }
                 }

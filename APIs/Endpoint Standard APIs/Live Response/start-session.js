@@ -14,10 +14,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/integrationServices/v3/cblr/session/' + msg.payload,
+                path: `/integrationServices/v3/cblr/session/${msg.payload}`,
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.liveResponseApiKey + '/' + this.server.liveResponseApiId,
+                    'X-Auth-Token': `${this.server.liveResponse_api_key}/${this.server.liveResponse_api_id}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }
@@ -40,7 +40,7 @@ module.exports = function(RED) {
 
                         const schema = JSON.parse(body);
                         msg.payload = schema;
-                        msg.sessionId = schema.session_id;
+                        msg.session_id = schema.session_id;
                         node.send([msg, null]);
                     } else {
                         node.send([null, body])
@@ -67,7 +67,7 @@ module.exports = function(RED) {
         })
     }
 
-    RED.nodes.registerType("start-session", StartSessionNode);
+    RED.nodes.registerType('start-session', StartSessionNode);
 }
 
 

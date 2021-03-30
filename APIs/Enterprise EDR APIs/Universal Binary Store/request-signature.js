@@ -13,10 +13,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: `/ubs/v1/orgs/${this.server.orgKey}/sha256/${msg.payload}/summary/signature`,
+                path: `/ubs/v1/orgs/${this.server.org_key}/sha256/${msg.payload}/summary/signature`,
                 method: 'GET',
                 headers: {
-                    'X-Auth-Token': `${this.server.customApiKey}/${this.server.customApiId}`,
+                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
                     'Content-Type': 'application/json'
                 }
             }

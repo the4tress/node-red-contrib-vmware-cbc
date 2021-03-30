@@ -14,10 +14,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/ubs/v1/orgs/' + this.server.orgKey + '/file/_download',
+                path: '/ubs/v1/orgs/' + this.server.org_key + '/file/_download',
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.customApiKey + '/' + this.server.customApiId,
+                    'X-Auth-Token': this.server.custom_api_key + '/' + this.server.custom_api_id,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }

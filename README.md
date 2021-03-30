@@ -8,14 +8,14 @@ Please submit any issues to the Github repo or submit a pull request with change
 
 # Install
 
-Either use the **Menu > Manage Palette > Install** option or run the following command in your Node-RED user directory - typically `~/.node-red`
+Either use the **Menu > Manage Palette > Install** option or run the following command in your Node-RED user directory (typically `~/.node-red`)
 
     npm i node-red-contrib-vmware-cbc
 
 This package is available at the following locations:
- - Github: https://github.com/the4tress/node-red-contrib-vmware-cbc
- - npm: https://www.npmjs.com/package/node-red-contrib-vmware-cbc
- - NodeRED: https://flows.nodered.org/node/node-red-contrib-vmware-cbc
+ - GitHub: https://github.com/the4tress/node-red-contrib-vmware-cbc
+ - NPM: https://www.npmjs.com/package/node-red-contrib-vmware-cbc
+ - Node-RED: https://flows.nodered.org/node/node-red-contrib-vmware-cbc
 
 # Usage
 
@@ -23,7 +23,7 @@ These nodes are just wrappers for the API query. Any endpoint that requires a re
 
 The first time you use these nodes you will need to configure a CBC server with API credentials. Not all fields are required, but you should understand which endpoints use which API key types. If you get a 403 (authentication) error, make sure the API type is populated and has the correct access level.
 
-These nodes are generally designed to work well with each other. For example, some APIs need to work together (like Process Search). These nodes will output the primary field of interest (typically the `id`) as its own element in the `msg` object (i.e. `msg.jobId`). This is the same structure as is expected by the follow-up call.
+These nodes are generally designed to work well with each other. For example, some APIs need to work together (like Process Search). These nodes will output the primary field of interest (typically the `id`) as its own element in the `msg` object (i.e. `msg.job_id`). This is the same structure as is expected by the follow-up call.
 
 If you find any opportunities for improvement let me know. This is a community project to help articulate the possibilities with the APIs.
 

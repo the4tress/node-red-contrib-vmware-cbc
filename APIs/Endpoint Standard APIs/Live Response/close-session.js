@@ -9,10 +9,10 @@ module.exports = function(RED) {
 
         var node = this;
         
-        if (msg.sessionId) {
+        if (msg.session_id) {
             msg.payload = {
-                "session_id": msg.sessionId,
-                "status": "CLOSE"
+                session_id: msg.session_id,
+                status: 'CLOSE'
             };
         }
 
@@ -24,7 +24,7 @@ module.exports = function(RED) {
                 path: '/integrationServices/v3/cblr/session',
                 method: 'PUT',
                 headers: {
-                    'X-Auth-Token': this.server.liveResponseApiKey + '/' + this.server.liveResponseApiId,
+                    'X-Auth-Token': `${this.server.liveResponse_api_key}/${this.server.liveResponse_api_id}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }
@@ -70,7 +70,7 @@ module.exports = function(RED) {
         })
     }
 
-    RED.nodes.registerType("close-session", CloseSessionNode);
+    RED.nodes.registerType('close-session', CloseSessionNode);
 }
 
 

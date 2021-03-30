@@ -18,10 +18,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: `/api/investigate/v2/orgs/${this.server.orgKey}/processes/search_jobs/${msg.jobId}/results`,
+                path: `/api/investigate/v2/orgs/${this.server.org_key}/processes/search_jobs/${msg.job_id}/results`,
                 method: 'GET',
                 headers: {
-                    'X-Auth-Token': `${this.server.customApiKey}/${this.server.customApiId}`,
+                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
                     'Content-Type': 'application/json'
                 }
             }

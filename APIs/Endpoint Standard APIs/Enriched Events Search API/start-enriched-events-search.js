@@ -14,10 +14,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/api/investigate/v2/orgs/' + this.server.orgKey + '/enriched_events/search_jobs',
+                path: `/api/investigate/v2/orgs/${this.server.org_key}/${enriched_events/search_jobs}`,
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.customApiKey + '/' + this.server.customApiId,
+                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }

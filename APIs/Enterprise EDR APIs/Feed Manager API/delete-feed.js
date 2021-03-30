@@ -14,10 +14,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: `/threathunter/feedmgr/v2/orgs/${this.server.orgKey}/feeds/${feedId}`,
+                path: `/threathunter/feedmgr/v2/orgs/${this.server.org_key}/feeds/${feedId}`,
                 method: 'DELETE',
                 headers: {
-                    'X-Auth-Token': `${this.server.customApiKey}/${this.server.customApiId}`,
+                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }

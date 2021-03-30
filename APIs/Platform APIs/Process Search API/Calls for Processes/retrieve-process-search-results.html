@@ -32,11 +32,11 @@
 </script>
 
 <script type="text/html" data-help-name="retrieve-process-search-results">
-    <p>Retrieves the results of a process search identified by a job_id. Results will be sorted based on the sort parameter specified when starting the search. Confirm the search has completed by verifying that “contacted” equals “completed”.</p>
+    <p>Retrieves the results of a process search identified by a `job_id`. Results will be sorted based on the sort parameter specified when starting the search. Confirm the search has completed by verifying that `“contacted”` equals `“completed”`.</p>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
-        <dt>jobId <span class="property-type">string</span></dt>
+        <dt>job_id <span class="property-type">string</span></dt>
         <dd>the <code>job_id</code> of the process search job.</dd>
         <dt class="optional">params <span class="property-type">object</span></dt>
         <dd><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/platform-search-api-processes/#retrieve-results-for-a-process-search-v2">See Documentation</a></dd>
@@ -53,8 +53,8 @@
 
         <li>Each Process
             <dl class="message-properties">
-                <dt>payload <span class="property-type">object</span></dt>
-                <dd>an object of each individual process.</dd>
+                <dt>msg <span class="property-type">object</span></dt>
+                <dd>an object of each individual process. Note that this replaces the `msg` obejct with the alert object.</dd>
             </dl>
         </li>
 

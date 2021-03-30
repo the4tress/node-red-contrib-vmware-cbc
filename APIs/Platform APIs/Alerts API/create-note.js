@@ -14,10 +14,10 @@ module.exports = function(RED) {
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/appservices/v6/orgs/' + this.server.orgKey + '/alerts/' + msg.alertId + '/notes',
+                path: `/appservices/v6/orgs/${this.server.org_key}/alerts/${msg.alert_id}/notes`,
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.customApiKey + '/' + this.server.customApiId,
+                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }

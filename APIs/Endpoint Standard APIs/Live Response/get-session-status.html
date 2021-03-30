@@ -27,14 +27,15 @@
 </script>
 
 <script type="text/html" data-help-name="get-session-status">
-    <p>Get alerts from Carbon Black Cloud.</p>
+    <p>Get the status of a Live Response session.</p>
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/live-response-api/#start-a-new-session">See Documentation</a></p>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload<span class="property-type">string</span></dt>
-        <dd> the <code>id</code> session. Optional if <code>msg.sessionId</code> is present.</dd>
+        <dd> the <code>id</code> session. Optional if <code>msg.session_id</code> is present.</dd>
         
-        <dt class="optional">sessionId <span class="property-type">string</span></dt>
+        <dt class="optional">session_id <span class="property-type">string</span></dt>
         <dd> the <code>id</code> of the session.</dd>
     </dl>
     
