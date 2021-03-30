@@ -40,7 +40,7 @@ module.exports = function(RED) {
 
                         const schema = JSON.parse(body);
                         msg.payload = schema;
-                        msg.session_id = schema.session_id;
+                        msg.session_id = schema.id;
                         node.send([msg, null]);
                     } else {
                         node.send([null, body])
