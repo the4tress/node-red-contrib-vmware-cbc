@@ -10,10 +10,10 @@ module.exports = function(RED) {
         this.org_key = n.org_key;
         this.custom_api_id = n.custom_api_id;
         this.custom_api_key = n.custom_api_key;
-        this.apiId = n.apiId;
-        this.apiKey = n.apiKey;
-        this.liveResponseApiId = n.liveResponseApiId;
-        this.liveResponseApiKey = n.liveResponseApiKey;
+        this.api_id = n.api_id;
+        this.api_key = n.api_key;
+        this.liveResponse_api_id = n.liveResponse_api_id;
+        this.liveResponse_api_key = n.liveResponse_api_key;
     }
 
     RED.nodes.registerType("carbon-black-cloud", CarbonBlackCloudNode);
