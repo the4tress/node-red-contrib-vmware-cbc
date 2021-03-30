@@ -10,6 +10,12 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', function(msg) {
+            node.status({
+                text: 'getting session status...',
+                fill: 'grey'
+            })
+            
+
             if (!msg.session_id) {
                 if (msg.payload) { msg.session_id = msg.payload }
                 else {

@@ -10,14 +10,19 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
+            node.status({
+                text: 'sending device action...',
+                fill: 'grey'
+            })
+    
             const data = JSON.stringify(msg.payload);
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: '/appservices/v6/orgs/' + this.server.org_key + '/device_actions',
+                path: `/appservices/v6/orgs/${this.server.org_key}/device_actions`,
                 method: 'POST',
                 headers: {
-                    'X-Auth-Token': this.server.custom_api_key + '/' + this.server.custom_api_id,
+                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
                     'Content-Type': 'application/json',
                     'Content-Length': data.length
                 }
@@ -31,30 +36,28 @@ module.exports = function(RED) {
                 res.on('data', data => {
                     body += data.toString();
                 }).on('end', () => {                    
-                    // A 200 is a success             
-                    if (res.statusCode == 200) {
+                    // A 204 is a success             
+                    if (res.statusCode == 204) {
                         node.status({
                             text: `statusCode: ${res.statusCode}`,
                             fill: 'green'
                         })
 
-                        const schema = JSON.parse(body);
-                        msg.payload = schema;
                         node.send([msg, null]);
                     } else {
                         node.send([null, body])
-                        console.error([null, body])
                         node.status({
                             text: `statusCode: ${res.statusCode}`,
                             fill: 'red'
                         })
+                        console.error(body)
                     }
                 })
             })
             
             req.on('error', error => {
                 node.send([null, error])
-                console.error([null, error])
+                console.error(error)
                 node.status({
                     text: `statusCode: ${res.statusCode}`,
                     fill: 'red'

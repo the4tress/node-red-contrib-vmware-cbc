@@ -10,6 +10,11 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
+            node.status({
+                text: 'starting session...',
+                fill: 'grey'
+            })
+            
             const data = JSON.stringify(msg.payload);
             const options = {
                 hostname: this.server.domain,

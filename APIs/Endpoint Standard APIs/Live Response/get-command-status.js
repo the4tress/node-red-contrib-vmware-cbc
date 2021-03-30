@@ -10,6 +10,11 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
+            node.status({
+                text: 'getting command status...',
+                fill: 'grey'
+            })
+
             if (!msg.session_id) {
                 node.send([null, body])
                 console.error(body)

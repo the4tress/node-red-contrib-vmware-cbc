@@ -13,7 +13,7 @@ module.exports = function(RED) {
             node.status({
                 text: 'getting processes...',
                 fill: 'grey'
-            });
+            })
            
             const options = {
                 hostname: this.server.domain,

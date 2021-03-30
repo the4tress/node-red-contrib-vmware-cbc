@@ -10,6 +10,11 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
+            node.status({
+                text: 'getting reputation override...',
+                fill: 'grey'
+            })
+            
             const options = {
                 hostname: this.server.domain,
                 port: 443,

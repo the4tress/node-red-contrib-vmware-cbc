@@ -17,6 +17,11 @@ module.exports = function(RED) {
         }
 
         node.on('input', function(msg) {
+            node.status({
+                text: 'closing session...',
+                fill: 'grey'
+            })
+            
             const data = JSON.stringify(msg.payload);
             const options = {
                 hostname: this.server.domain,

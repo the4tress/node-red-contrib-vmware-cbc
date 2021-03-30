@@ -9,7 +9,12 @@ module.exports = function(RED) {
 
         var node = this;
         
-        node.on('input', function(msg) {s
+        node.on('input', function(msg) {
+            node.status({
+                text: 'getting results...',
+                fill: 'grey'
+            })
+            
             const options = {
                 hostname: this.server.domain,
                 port: 443,
