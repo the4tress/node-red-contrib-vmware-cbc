@@ -10,7 +10,7 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
-            if (!msg.payload && msg.feedId) { msg.payload = msg.feedId; }
+            if (!msg.payload && msg.feed_id) { msg.payload = msg.feed_id; }
             
             const options = {
                 hostname: this.server.domain,
