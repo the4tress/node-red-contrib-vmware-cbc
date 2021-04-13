@@ -8,20 +8,19 @@ module.exports = function(RED) {
         this.server = RED.nodes.getNode(config.server);
 
         var node = this;
-        
-        if (msg.session_id) {
-            msg.payload = {
-                session_id: msg.session_id,
-                status: 'CLOSE'
-            };
-        }
 
         node.on('input', function(msg) {
             node.status({
                 text: 'closing session...',
                 fill: 'grey'
             })
-            
+                    
+            if (msg.session_id) {
+                msg.payload = {
+                    session_id: msg.session_id,
+                    status: 'CLOSE'
+                };
+            }
             const data = JSON.stringify(msg.payload);
             const options = {
                 hostname: this.server.domain,

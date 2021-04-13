@@ -15,6 +15,16 @@ module.exports = function(RED) {
                 fill: 'grey'
             })
             
+            if (!msg.device_id && msg.payload) { msg.device_id = msg.payload; }
+            if (!msg.device_id) {
+                node.send([null, body])
+                console.error(body)
+                node.status({
+                    text: 'Missing device_id',
+                    fill: 'red'
+                })
+            }
+
             const data = JSON.stringify(msg.payload);
             const options = {
                 hostname: this.server.domain,
