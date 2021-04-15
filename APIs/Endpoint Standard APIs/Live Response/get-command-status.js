@@ -45,7 +45,7 @@ module.exports = function(RED) {
                         'Content-Type': 'application/json'
                     }
                 }
-                
+
                 const req = https.request(options, res => {
                     // Start an emptry string for the body. This will be built on as we iterate through the response parts.
                     let body = '';

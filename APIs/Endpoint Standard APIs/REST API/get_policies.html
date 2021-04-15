@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get-policies',{
+        category: 'CBC Endpoint Standard',
+        color: '#00BBD3',
+        defaults: {
+            server: { value: '', type: 'carbon-black-cloud' }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: 'font-awesome/fa-rss-square',
+        label: function() {
+            return this.name || 'get-policies';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="get-policies">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="get-policies">
+    <p>Get the list of policies available in your organization. This list of policies include system policies (cannot be deleted or modified) as well as user-created policies (which can be deleted and modified). Each policy is a JSON document containing metadata about the policy and a list of rules. There is a separate rule API that can create, modify, and delete rules inside of a policy in addition to replacing the entire policy through the Policy API.
+    </p>
+    <p><a href="https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/rest-api/#get-list-of-policies">See Documentation</a>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">object</span></dt>
+                <dd>an object of the response.</dd>
+            </dl>
+        </li>
+        <li>Standard error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+</script>

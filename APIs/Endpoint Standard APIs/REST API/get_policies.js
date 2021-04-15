@@ -1,7 +1,7 @@
 const https = require('https')
 
 module.exports = function(RED) {
-    function DownloadFileNode(config) {
+    function GetPoliciesNode(config) {
         RED.nodes.createNode(this,config);
 
         // Retrieve the config node
@@ -10,19 +10,14 @@ module.exports = function(RED) {
         var node = this;
         
         node.on('input', function(msg) {
-            const data = JSON.stringify({
-                "sha256": [msg.payload],
-                "expiration_seconds": 300
-            });
             const options = {
                 hostname: this.server.domain,
                 port: 443,
-                path: `/ubs/v1/orgs/${this.server.org_key}/file/_download`,
-                method: 'POST',
+                path: `/integrationServices/v3/policy`,
+                method: 'GET',
                 headers: {
-                    'X-Auth-Token': `${this.server.custom_api_key}/${this.server.custom_api_id}`,
-                    'Content-Type': 'application/json',
-                    'Content-Length': data.length
+                    'X-Auth-Token': `${this.server.api_key}/${this.server.api_id}`,
+                    'Content-Type': 'application/json'
                 }
             }
             
@@ -34,7 +29,7 @@ module.exports = function(RED) {
                 res.on('data', data => {
                     body += data.toString();
                 }).on('end', () => {                    
-                    // A 200 is a success             
+                    // A 200 is a success
                     if (res.statusCode == 200) {
                         node.status({
                             text: `statusCode: ${res.statusCode}`,
@@ -64,10 +59,9 @@ module.exports = function(RED) {
                 })
             })
             
-            req.write(data)
             req.end()
         })
     }
 
-    RED.nodes.registerType("download-file", DownloadFileNode);
+    RED.nodes.registerType('get-policies', GetPoliciesNode);
 }
